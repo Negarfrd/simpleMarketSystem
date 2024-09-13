@@ -12,4 +12,12 @@ public class User
         this.password = password;
         this.shoppingList = new Item[5];
     }
+    
+    public string Username { get => username; set => username = value; }
+    public string Password { get => password; set => password = value; }
+
+    public Item[] GetShoppingList()
+    {
+        return shoppingList;
+    }
 }
