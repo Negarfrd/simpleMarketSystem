@@ -1,12 +1,12 @@
 ﻿using System.Collections;
 
-namespace Service;
+namespace DotNetHW2;
 
 public class DataBase
 {
     private static DataBase _dataBase;
-    private ArrayList itemsList;
-    private ArrayList usersList;
+    private ArrayList itemsList { get; }
+    private ArrayList usersList { get; }
 
     private DataBase()
     {
@@ -22,5 +22,15 @@ public class DataBase
         }
 
         return _dataBase;
+    }
+
+    public ArrayList GetItems()
+    {
+        return this.itemsList;
+    }
+
+    public ArrayList GetUsers()
+    {
+        return this.usersList;
     }
 }
