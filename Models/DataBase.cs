@@ -4,7 +4,7 @@ namespace DotNetHW2;
 
 public class DataBase
 {
-    private static DataBase _dataBase;
+    private static DataBase? _dataBase;
     private ArrayList itemsList { get; }
     private ArrayList usersList { get; }
 
