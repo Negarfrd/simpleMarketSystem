@@ -115,23 +115,25 @@ public class Program
 
     public static void AdminAction(UserService userService, ItemService itemService, DataBase dataBase)
     {
-       Console.WriteLine("Admin Actions : Add or delete items if you want!");
-       Console.WriteLine("correct format: add/delete name price");
-       string? adminInput = Console.ReadLine();
-       if (adminInput != null && adminInput.Split(' ').ToArray()[0].ToLower().Equals("add"))
-       {
-           Console.WriteLine(itemService.AddItem(new Item(adminInput.Split(' ').ToArray()[1], adminInput.Split(' ').Select(double.Parse).ToArray()[2])));
-           AdminAction(userService, itemService, dataBase);
-       }
-       else if (adminInput != null && adminInput.Split(' ').ToArray()[0].ToLower().Equals("delete"))
-       {
-           Console.WriteLine(itemService.DeleteItem(new Item(adminInput.Split(' ').ToArray()[1], adminInput.Split(' ').Select(double.Parse).ToArray()[2])));
-           AdminAction(userService, itemService, dataBase); 
-       }
-       else
-       {
-           Console.WriteLine("Invalid command!");
-           AdminAction(userService, itemService, dataBase);
-       }
+        Console.WriteLine("Admin Actions : Add or delete items if you want!");
+        Console.WriteLine("correct format: add/delete name price");
+        string? adminInput = Console.ReadLine();
+        if (adminInput != null && adminInput.Split(' ').ToArray()[0].ToLower().Equals("add"))
+        {
+            Console.WriteLine(itemService.AddItem(new Item(adminInput.Split(' ').ToArray()[1],
+                adminInput.Split(' ').Select(double.Parse).ToArray()[2])));
+            AdminAction(userService, itemService, dataBase);
+        }
+        else if (adminInput != null && adminInput.Split(' ').ToArray()[0].ToLower().Equals("delete"))
+        {
+            Console.WriteLine(itemService.DeleteItem(new Item(adminInput.Split(' ').ToArray()[1],
+                adminInput.Split(' ').Select(double.Parse).ToArray()[2])));
+            AdminAction(userService, itemService, dataBase);
+        }
+        else
+        {
+            Console.WriteLine("Invalid command!");
+            AdminAction(userService, itemService, dataBase);
+        }
     }
 }
