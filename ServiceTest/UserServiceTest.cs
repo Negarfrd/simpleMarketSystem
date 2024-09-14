@@ -19,10 +19,10 @@ public class UserServiceTest
         var user = new User("testName", "testPassword");
         var dataBase = DataBase.GetDatabase();
         dataBase.GetUsers().Add(user);
-        
+
         //Act
         _sut.Login("testName", "testPassword");
-        
+
         //Assert
         Assert.Equal(_sut.GetUser(), user);
     }
@@ -33,10 +33,10 @@ public class UserServiceTest
         //Arrange
         var user = new User("testName", "testPassword");
         var dataBase = DataBase.GetDatabase();
-        
+
         //Act
         _sut.Signup("testName", "testPassword");
-        
+
         //Assert
         Assert.Equal(_sut.GetUser().Username, user.Username);
     }
@@ -49,10 +49,10 @@ public class UserServiceTest
         var dataBase = DataBase.GetDatabase();
         dataBase.GetUsers().Add(user);
         string newPassword = "newPassword";
-        
+
         //Act
         _sut.ChangePassword(user.Password, newPassword);
-        
+
         //Assert
         Assert.Equal(user.Password, newPassword);
     }
@@ -65,10 +65,10 @@ public class UserServiceTest
         var dataBase = DataBase.GetDatabase();
         dataBase.GetUsers().Add(user);
         string newUsername = "newUsername";
-        
+
         //Act
         _sut.ChangeUsername(user.Username, newUsername);
-        
+
         //Assert
         Assert.Equal(user.Username, newUsername);
     }
