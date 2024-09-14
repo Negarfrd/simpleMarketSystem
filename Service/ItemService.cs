@@ -32,7 +32,7 @@ public class ItemService : IItemService
 
     public string BuyItem(Item item)
     {
-        //TODO : implement method later for specific user
+        UserService.GetUserService().GetUser().GetShoppingList().Add(item);
         return "product purchase was successful";
     }
 }

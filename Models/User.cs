@@ -1,22 +1,24 @@
-﻿namespace DotNetHW2;
+﻿using System.Collections;
+
+namespace DotNetHW2;
 
 public class User
 {
     private string username { get; set; }
     private string password { get; set; }
-    private Item[] shoppingList { get; }
+    private ArrayList shoppingList { get; }
 
     public User(string username, string password)
     {
         this.username = username;
         this.password = password;
-        this.shoppingList = new Item[5];
+        this.shoppingList = new ArrayList();
     }
     
     public string Username { get => username; set => username = value; }
     public string Password { get => password; set => password = value; }
 
-    public Item[] GetShoppingList()
+    public ArrayList GetShoppingList()
     {
         return shoppingList;
     }
