@@ -40,7 +40,7 @@ public class UserService : IUserService
             SetUser(user);
             return "logging in was successful";
         }
-        
+
         return "user not found";
     }
 
@@ -62,9 +62,28 @@ public class UserService : IUserService
 
     public string ChangeUsername(string username, string newUsername)
     {
+        foreach (User user in DataBase.GetDatabase().GetUsers())
+        {
+            if (user.Username.ToLower().Equals(username))
+            {
+                user.Username = newUsername;
+                return "changing username was successful";
+            }
+        }
+
+        return "user not found";
     }
 
     public string ChangePassword(string oldPassword, string newPassword)
     {
+        foreach (User user in DataBase.GetDatabase().GetUsers())
+        {
+            if (user.Password.Equals(oldPassword))
+            {
+                user.Password = newPassword;
+                return "changing password was successful";
+            }
+        }
+        return "invalid password";
     }
 }
