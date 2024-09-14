@@ -35,7 +35,7 @@ public class UserService : IUserService
     {
         foreach (User user in DataBase.GetDatabase().GetUsers())
         {
-            if (!user.Username.ToLower().Equals(username)) continue;
+            if (!user.Username.ToLower().Equals(username.ToLower())) continue;
             if (!user.Password.Equals(password)) return "invalid password";
             SetUser(user);
             return "logging in was successful";
@@ -48,7 +48,7 @@ public class UserService : IUserService
     {
         foreach (User user in DataBase.GetDatabase().GetUsers())
         {
-            if (user.Username.ToLower().Equals(username))
+            if (user.Username.ToLower().Equals(username.ToLower())) continue;
             {
                 return "this username is already taken";
             }
@@ -64,11 +64,9 @@ public class UserService : IUserService
     {
         foreach (User user in DataBase.GetDatabase().GetUsers())
         {
-            if (user.Username.ToLower().Equals(username))
-            {
-                user.Username = newUsername;
-                return "changing username was successful";
-            }
+            if (!user.Username.ToLower().Equals(username.ToLower())) continue;
+            user.Username = newUsername;
+            return "changing username was successful";
         }
 
         return "user not found";
