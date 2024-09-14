@@ -4,7 +4,7 @@ namespace Service;
 
 public class UserService : IUserService
 {
-    private User _user;
+    private User? _user;
     private static UserService? _userService;
 
     private UserService()
@@ -21,19 +21,19 @@ public class UserService : IUserService
         return _userService;
     }
 
-    public User GetUser()
+    public User? GetUser()
     {
         return _user;
     }
 
-    public void SetUser(User user)
+    public void SetUser(User? user)
     {
         _user = user;
     }
 
     public string Login(string username, string password)
     {
-        foreach (User user in DataBase.GetDatabase().GetUsers())
+        foreach (User? user in DataBase.GetDatabase().GetUsers())
         {
             if (!user.Username.ToLower().Equals(username.ToLower())) continue;
             if (!user.Password.Equals(password)) return "invalid password";
@@ -54,7 +54,7 @@ public class UserService : IUserService
             }
         }
 
-        User newUser = new User(username, password);
+        User? newUser = new User(username, password);
         SetUser(newUser);
         DataBase.GetDatabase().GetUsers().Add(newUser);
         return "signing up was successful";

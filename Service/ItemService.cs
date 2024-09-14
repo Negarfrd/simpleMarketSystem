@@ -21,7 +21,7 @@ public class ItemService : IItemService
     {
         foreach (var _item in DataBase.GetDatabase().GetItems())
         {
-            if (_item.Equals(item))
+            if (_item.ToString()!.Equals(item.ToString()))
             {
                 DataBase.GetDatabase().GetItems().Remove(item);
                 return "item deleted.";
